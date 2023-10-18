@@ -4,15 +4,14 @@ using OpenQA.Selenium.Chrome;
 
 namespace InvoiceCloudTechnicalAssessment.Tests
 {
-    public class AddRemoveTests
+	[TestFixture]
+    public class AddRemoveTests : BaseTestFixture
     {
-        IWebDriver driver;
         public AddRemoveElementsPage addRemovePage;
 
         [SetUp]
         public void Setup()
         {
-			driver = new ChromeDriver();
 			addRemovePage = new AddRemoveElementsPage(driver);
 			addRemovePage.Navigate();
         }
@@ -60,11 +59,5 @@ namespace InvoiceCloudTechnicalAssessment.Tests
 			addRemovePage.ClickDeleteElementButton();
 			Assert.That(addRemovePage.AddedElementCount(), Is.EqualTo(0));
 		}
-
-		[TearDown]
-        public void teardown()
-        {
-            driver.Quit();
-        }
     }
 }
