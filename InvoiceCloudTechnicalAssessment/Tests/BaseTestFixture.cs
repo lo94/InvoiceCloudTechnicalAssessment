@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
@@ -12,9 +13,13 @@ namespace InvoiceCloudTechnicalAssessment.Tests
 		[SetUp]
 		public void Setup()
 		{
+			ChromeOptions options = new ChromeOptions();
+			options.AddArguments("start-maximized");
+			options.AddArguments("--disable-gpu");
+			options.AddArguments("--headless");
 			//driver = new ChromeDriver();
 			new DriverManager().SetUpDriver(new ChromeConfig());
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(options);
 		}
 
 		[TearDown]
