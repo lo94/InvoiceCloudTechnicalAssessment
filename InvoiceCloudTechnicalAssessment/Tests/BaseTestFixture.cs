@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
+using WebDriverManager.Helpers;
 
 namespace InvoiceCloudTechnicalAssessment.Tests
 {
@@ -18,7 +19,7 @@ namespace InvoiceCloudTechnicalAssessment.Tests
 			options.AddArguments("--disable-gpu");
 			options.AddArguments("--headless");
 			//driver = new ChromeDriver();
-			new DriverManager().SetUpDriver(new ChromeConfig());
+			new DriverManager().SetUpDriver(new ChromeConfig(), VersionResolveStrategy.MatchingBrowser);
 			driver = new ChromeDriver(options);
 		}
 
